@@ -26,33 +26,6 @@ export default class RadarChart extends Chart {
 			pathArr[pathArr.length] = pathArr[0];
 			it.path = "M" + pathArr.join("L ");
 		});
-/*
-		for (let i = 0; i < this.yAxis.length; i++) {
-			let pathArr = [];
-			let r;
-
-			if (this.oom > 2) {
-				r = Math.log(this.yAxis[i].number) * Math.LOG10E * this.stepLength / 2;
-			}
-			else {
-				r = this.yAxis[i].number * this.stepLength / 2;
-			}
-
-			this.yAxis[i].y = r;
-
-			let total = this.series[0].data.length;
-
-			for (let j = 0; j < this.series[0].data.length; j++) {
-				let x = this.offsetLeft + Math.round(Math.cos((j / total) * (2 * Math.PI)) * r) + this.width / 2;
-				let y = this.offsetTop + Math.round(Math.sin((j / total) * (2 * Math.PI)) * r) + this.height / 2;
-
-				pathArr.push(x + " " + y + " ");
-			}
-
-			pathArr[pathArr.length] = pathArr[0];
-			this.yAxis[i].path = "M" + pathArr.join("L ");
-		}
-*/
 
 		// 射线
 		let center = (this.offsetLeft + this.width / 2) + " " + (this.offsetTop + this.height / 2);
@@ -66,17 +39,7 @@ export default class RadarChart extends Chart {
 				path:"M" + center + " L" + pathArr[i]
 			};
 
-			let r;
-
-			if (this.oom > 2) {
-				r = Math.log(this.series[0].data[i]) * Math.LOG10E * this.stepLength / 2;
-			}
-			else {
-				r = this.series[0].data[i] * this.stepLength / 2;
-			}
-
-			console.log(Math.round(Math.cos((i / total) * (2 * Math.PI)) * r));
-			console.log(Math.round(Math.sin((i / total) * (2 * Math.PI)) * r));
+			let r = this.series[0].data[i] * this.stepLength / 2;
 
 			let x = this.offsetLeft + Math.round(Math.cos((i / total) * (2 * Math.PI)) * r) + this.width / 2;
 			let y = this.offsetTop + Math.round(Math.sin((i / total) * (2 * Math.PI)) * r) + this.height / 2;
