@@ -1,4 +1,3 @@
-
 export default class Chart {
 	constructor() {
 		this.offsetLeft = 50;
@@ -32,7 +31,7 @@ export default class Chart {
 		let step = Math.pow(10, Math.floor(Math.log(max - min) / Math.LN10));
 
 		this.yAxis = Array.from(Array(max - min), (v, k) => {
-			number:step * k
+			return {number: step * k};
 		});
 
 		this.stepLength = this.height / this.yAxis[this.yAxis.length - 1].number;
