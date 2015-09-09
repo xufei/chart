@@ -5,9 +5,12 @@ export default class RadarChart extends Chart {
 		super.scale();
 
 		let that = this;
+
+		let pathArr = [];
+
 		// 坐标刻度线
 		this.yAxis.forEach((it, i) => {
-			let pathArr = [];
+			pathArr = [];
 
 			let r = this.yAxis[i].number * this.stepLength / 2;
 			this.yAxis[i].y = r;
@@ -37,9 +40,9 @@ export default class RadarChart extends Chart {
 
 			this.yAxis[i].y = r;
 
-			let total = this.numbers.length;
+			let total = this.series[0].data.length;
 
-			for (let j = 0; j < this.numbers.length; j++) {
+			for (let j = 0; j < this.series[0].data.length; j++) {
 				let x = this.offsetLeft + Math.round(Math.cos((j / total) * (2 * Math.PI)) * r) + this.width / 2;
 				let y = this.offsetTop + Math.round(Math.sin((j / total) * (2 * Math.PI)) * r) + this.height / 2;
 
@@ -51,14 +54,13 @@ export default class RadarChart extends Chart {
 		}
 */
 
-		/*
 		// 射线
 		let center = (this.offsetLeft + this.width / 2) + " " + (this.offsetTop + this.height / 2);
 		let numArr = [];
 		let markerPathArr = [];
 
-		let total = this.numbers.length;
-		for (let i = 0; i < this.numbers.length; i++) {
+		let total = this.series[0].data.length;
+		for (let i = 0; i < this.series[0].data.length; i++) {
 			let outer = this.yAxis[this.yAxis.length - 1];
 			this.xAxis[i] = {
 				path:"M" + center + " L" + pathArr[i]
@@ -67,10 +69,10 @@ export default class RadarChart extends Chart {
 			let r;
 
 			if (this.oom > 2) {
-				r = Math.log(this.numbers[i]) * Math.LOG10E * this.stepLength / 2;
+				r = Math.log(this.series[0].data[i]) * Math.LOG10E * this.stepLength / 2;
 			}
 			else {
-				r = this.numbers[i] * this.stepLength / 2;
+				r = this.series[0].data[i] * this.stepLength / 2;
 			}
 
 			console.log(Math.round(Math.cos((i / total) * (2 * Math.PI)) * r));
@@ -96,6 +98,5 @@ export default class RadarChart extends Chart {
 
 		this.dataPath = "M" + numArr.join("L ");
 		this.markerPathArr = markerPathArr;
-		*/
 	}
 }
