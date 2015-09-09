@@ -50,6 +50,8 @@ export default class RadarChart extends Chart {
 			this.yAxis[i].path = "M" + pathArr.join("L ");
 		}
 */
+
+		/*
 		// 射线
 		let center = (this.offsetLeft + this.width / 2) + " " + (this.offsetTop + this.height / 2);
 		let numArr = [];
@@ -94,5 +96,6 @@ export default class RadarChart extends Chart {
 
 		this.dataPath = "M" + numArr.join("L ");
 		this.markerPathArr = markerPathArr;
+		*/
 	}
 }
