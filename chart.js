@@ -91,10 +91,11 @@ export default class Chart {
 
 		this.series[0].data.forEach((it, i) => {
 			let height = it * this.stepLength;
+			let x = i * 50;
 
 			that.xAxis.push({
 				number: it,
-				x: i * 50,
+				x: x,
 				height: it * this.stepLength
 			});
 			this.xAxis[i].path = "M" + x + ",0 L" + x + ", 0";
