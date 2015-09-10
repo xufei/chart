@@ -26,8 +26,8 @@ export default class Chart {
 
 		let step = Math.pow(10, Math.floor(Math.log(max - min) / Math.LN10));
 
-		this.yAxis = Array.from(Array(Math.ceil(max / step) + 1), (v, k) => {
-			return {number: step * k};
+		this.yAxis = Array.from(Array(Math.ceil(max / step) + 1), (e, i) => {
+			return {number: step * i};
 		});
 
 		this.stepLength = this.height / this.yAxis[this.yAxis.length - 1].number;
@@ -71,12 +71,12 @@ export default class Chart {
 		this.linearScale();
 
 		// 横向的刻度线
-		for (let i = 0; i < this.yAxis.length; i++) {
-			let y = this.yAxis[i].number * this.stepLength;
+		this.yAxis.forEach((e, i) => {
+			let y = e * this.stepLength;
 
-			this.yAxis[i].y = y;
-			this.yAxis[i].path = "M0," + y + " L500," + y;
-		}
+			e.y = y;
+			e.path = "M0," + y + " L500," + y;
+		}).bind(this);
 	}
 
 
@@ -85,14 +85,14 @@ export default class Chart {
 
 		var that = this;
 
-		this.series[0].data.forEach((it, i) => {
-			let height = it * this.stepLength;
+		this.series[0].data.forEach((e, i) => {
+			let height = e * this.stepLength;
 			let x = i * 50;
 
 			that.xAxis.push({
-				number: it,
+				number: e,
 				x: x,
-				height: it * this.stepLength
+				height: e * this.stepLength
 			});
 			this.xAxis[i].path = "M" + x + ",0 L" + x + ", 0";
 		});
