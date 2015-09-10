@@ -17,8 +17,8 @@ export default class RadarChart extends Chart {
 
 			let total = that.series[0].data.length;
 			that.series[0].data.forEach((v, j) => {
-				let x = that.offsetLeft + Math.round(Math.cos((j / total) * (2 * Math.PI)) * r) + that.width / 2;
-				let y = that.offsetTop + Math.round(Math.sin((j / total) * (2 * Math.PI)) * r) + that.height / 2;
+				let x = Math.round(Math.cos((j / total) * (2 * Math.PI)) * r) + that.width / 2;
+				let y = Math.round(Math.sin((j / total) * (2 * Math.PI)) * r) + that.height / 2;
 
 				pathArr.push(x + " " + y + " ");
 			});
@@ -28,7 +28,7 @@ export default class RadarChart extends Chart {
 		});
 
 		// 射线
-		let center = (this.offsetLeft + this.width / 2) + " " + (this.offsetTop + this.height / 2);
+		let center = (this.width / 2) + " " + (this.height / 2);
 		let numArr = [];
 		let markerPathArr = [];
 
@@ -41,8 +41,8 @@ export default class RadarChart extends Chart {
 
 			let r = this.series[0].data[i] * this.stepLength / 2;
 
-			let x = this.offsetLeft + Math.round(Math.cos((i / total) * (2 * Math.PI)) * r) + this.width / 2;
-			let y = this.offsetTop + Math.round(Math.sin((i / total) * (2 * Math.PI)) * r) + this.height / 2;
+			let x = Math.round(Math.cos((i / total) * (2 * Math.PI)) * r) + this.width / 2;
+			let y = Math.round(Math.sin((i / total) * (2 * Math.PI)) * r) + this.height / 2;
 
 			numArr.push(x + " " + y + " ");
 
