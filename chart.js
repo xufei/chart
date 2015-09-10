@@ -1,11 +1,7 @@
 export default class Chart {
 	constructor() {
-		this.offsetLeft = 50;
-		this.offsetTop = 50;
-
 		this.width = 500;
 		this.height = 400;
-
 
 		this.xAxis = [];
 		this.yAxis = [];
@@ -101,7 +97,7 @@ export default class Chart {
 			this.xAxis[i].path = "M" + x + ",0 L" + x + ", 0";
 		});
 
-		this.xAxisPath = "M" + this.offsetLeft + ",0 L" + (this.offsetLeft + this.width) + ",0";
+		this.xAxisPath = "M0,0 L" + this.width + ",0";
 	}
 }
 
