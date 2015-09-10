@@ -17,7 +17,7 @@ export default class PieChart extends Chart {
 		let that = this;
 
 		this.series[0].data.forEach((e, i) => {
-			stop = 2 * Math.PI * e / total;
+			stop += 2 * Math.PI * e / total;
 
 			let e1x = rx * Math.cos(start);
 			let e1y = rx * Math.sin(start);
