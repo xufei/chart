@@ -72,7 +72,7 @@ export default class Chart {
 
 		// 横向的刻度线
 		this.yAxis.forEach((e, i) => {
-			let y = e * this.stepLength;
+			let y = e.number * this.stepLength;
 
 			e.y = y;
 			e.path = "M0," + y + " L500," + y;
