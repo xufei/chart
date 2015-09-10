@@ -14,6 +14,8 @@ export default class PieChart extends Chart {
 		let start = 0;
 		let stop = 0;
 
+		let that = this;
+
 		this.series[0].data.forEach((e, i) => {
 			stop = 2 * Math.PI * e / total;
 
@@ -40,9 +42,9 @@ export default class PieChart extends Chart {
 				"A" + rx + "," + ry + " 1 0,1 " + e2x + "," + e2y +
 				"A" + rx + "," + ry + " 1 0,1 " + e3x + "," + e3y + "z";
 
-			this.piePath[i] = path;
+			that.piePath[i] = path;
 
 			start = stop;
-		}).bind(this);
+		});
 	}
 }
