@@ -26,7 +26,7 @@ export default class Chart {
 
 		let step = Math.pow(10, Math.floor(Math.log(max - min) / Math.LN10));
 
-		this.yAxis = Array.from(Array(Math.ceil(max / step)), (v, k) => {
+		this.yAxis = Array.from(Array(Math.ceil(max / step) + 1), (v, k) => {
 			return {number: step * k};
 		});
 
