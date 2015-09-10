@@ -2,6 +2,7 @@ export default class Chart {
 	constructor() {
 		this.width = 500;
 		this.height = 400;
+		this.radius = 150;
 
 		this.xAxis = [];
 		this.yAxis = [];
