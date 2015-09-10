@@ -70,13 +70,15 @@ export default class Chart {
 	scale() {
 		this.linearScale();
 
+		let step = this.stepLength;
+
 		// 横向的刻度线
 		this.yAxis.forEach((e, i) => {
-			let y = e.number * this.stepLength;
+			let y = e.number * step;
 
 			e.y = y;
 			e.path = "M0," + y + " L500," + y;
-		}).bind(this);
+		});
 	}
 
 
@@ -94,7 +96,7 @@ export default class Chart {
 				x: x,
 				height: e * this.stepLength
 			});
-			this.xAxis[i].path = "M" + x + ",0 L" + x + ", 0";
+			this.xAxis[i].path = "M" + x + ",0 L" + x + ", 10";
 		});
 
 		this.xAxisPath = "M0,0 L" + this.width + ",0";
