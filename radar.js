@@ -15,8 +15,8 @@ export default class RadarChart extends Chart {
 
 			let total = this.series[0].data.length;
 			this.series[0].data.forEach((v, j) => {
-				let x = Math.round(Math.cos((j / total) * (2 * Math.PI)) * r) + that.radius;
-				let y = Math.round(Math.sin((j / total) * (2 * Math.PI)) * r) + that.radius;
+				let x = Math.round(Math.cos((j / total) * (2 * Math.PI)) * r) + this.radius;
+				let y = Math.round(Math.sin((j / total) * (2 * Math.PI)) * r) + this.radius;
 
 				pathArr.push(x + " " + y + " ");
 			});
