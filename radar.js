@@ -4,9 +4,7 @@ export default class RadarChart extends Chart {
 	render() {
 		super.scale();
 
-		let that = this;
-
-		let pathArr = [];
+		var pathArr = [];
 
 		// 坐标刻度线
 		this.yAxis.forEach((it, i) => {
@@ -16,7 +14,7 @@ export default class RadarChart extends Chart {
 			this.yAxis[i].y = r;
 
 			let total = that.series[0].data.length;
-			that.series[0].data.forEach((v, j) => {
+			this.series[0].data.forEach((v, j) => {
 				let x = Math.round(Math.cos((j / total) * (2 * Math.PI)) * r) + that.radius;
 				let y = Math.round(Math.sin((j / total) * (2 * Math.PI)) * r) + that.radius;
 
@@ -28,11 +26,11 @@ export default class RadarChart extends Chart {
 		});
 
 		// 射线
-		let center = (this.radius) + " " + (this.radius);
-		let numArr = [];
-		let markerPathArr = [];
+		var center = (this.radius) + " " + (this.radius);
+		var numArr = [];
+		var markerPathArr = [];
 
-		let total = this.series[0].data.length;
+		var total = this.series[0].data.length;
 		for (let i = 0; i < this.series[0].data.length; i++) {
 			let outer = this.yAxis[this.yAxis.length - 1];
 			this.xAxis[i] = {

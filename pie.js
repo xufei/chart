@@ -6,15 +6,13 @@ export default class PieChart extends Chart {
 
 		this.piePath = [];
 
-		let total = this.series[0].data.reduce((e, i) => { return e + i });
+		var total = this.series[0].data.reduce((e, i) => { return e + i });
 
-		let rx = this.radius;
-		let ry = this.radius;
+		var rx = this.radius;
+		var ry = this.radius;
 
-		let start = 0;
-		let stop = 0;
-
-		let that = this;
+		var start = 0;
+		var stop = 0;
 
 		this.series[0].data.forEach((e, i) => {
 			stop += 2 * Math.PI * e / total;
@@ -42,7 +40,7 @@ export default class PieChart extends Chart {
 				"A" + rx + "," + ry + " 1 0,1 " + e2x + "," + e2y +
 				"A" + rx + "," + ry + " 1 0,1 " + e3x + "," + e3y + "z";
 
-			that.piePath[i] = path;
+			this.piePath[i] = path;
 
 			start = stop;
 		});

@@ -22,10 +22,10 @@ export default class Chart {
 	}
 
 	linearScale() {
-		let max = Math.max.apply(null, this.series[0].data);
-		let min = Math.min.apply(null, this.series[0].data);
+		var max = Math.max.apply(null, this.series[0].data);
+		var min = Math.min.apply(null, this.series[0].data);
 
-		let step = Math.pow(10, Math.floor(Math.log(max - min) / Math.LN10));
+		var step = Math.pow(10, Math.floor(Math.log(max - min) / Math.LN10));
 
 		this.yAxis = Array.from(Array(Math.ceil(max / step) + 1), (e, i) => {
 			return {number: step * i};
@@ -35,8 +35,8 @@ export default class Chart {
 	}
 
 	logarithmicScale() {
-		let max = Math.max.apply(null, this.series[0].data);
-		let min = Math.min.apply(null, this.series[0].data);
+		var max = Math.max.apply(null, this.series[0].data);
+		var min = Math.min.apply(null, this.series[0].data);
 
 		if (max === min) {
 			if (min === 0) {
@@ -49,9 +49,8 @@ export default class Chart {
 		}
 
 		// 不管哪种坐标轴，都需要在最大最小值的基础上找等分点
-		let range = max - min;
+		var range = max - min;
 		this.oom = Math.floor(Math.log(range) / Math.LN10);
-		let step = Math.pow(10, this.oom);
 
 		min = Math.pow(10, Math.floor(Math.log(min) / Math.LN10));
 		max = Math.pow(10, Math.ceil(Math.log(max) / Math.LN10));
@@ -71,7 +70,7 @@ export default class Chart {
 	scale() {
 		this.linearScale();
 
-		let step = this.stepLength;
+		var step = this.stepLength;
 
 		// 横向的刻度线
 		this.yAxis.forEach((e, i) => {
@@ -86,15 +85,12 @@ export default class Chart {
 	render() {
 		this.scale();
 
-		var that = this;
-
 		this.series[0].data.forEach((e, i) => {
-			let height = e * this.stepLength;
 			let x = i * 50;
 
-			that.xAxis.push({
+			this.xAxis.push({
 				number: e,
-				x: x,
+				x: i * 50,
 				height: e * this.stepLength
 			});
 			this.xAxis[i].path = "M" + x + ",0 L" + x + ", 10";
