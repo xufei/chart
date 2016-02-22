@@ -31,7 +31,7 @@ export default class RadarChart extends Chart {
 		var markerPathArr = [];
 
 		var total = this.series[0].data.length;
-		for (let i = 0; i < this.series[0].data.length; i++) {
+		for (let i = 0; i < total; i++) {
 			this.xAxis[i] = {
 				path:"M" + center + " L" + pathArr[i]
 			};
